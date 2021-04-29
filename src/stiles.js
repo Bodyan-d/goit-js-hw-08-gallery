@@ -11,7 +11,7 @@ galleryRef.insertAdjacentHTML('beforeend', imageMarkupRef);
 galleryRef.addEventListener('click', onClickOpenLightbox);
 coseModalBtnRef.addEventListener('click', onClickCloseModal);
 lightboxOverlayRef.addEventListener('click', onClickCloseModal);
-window.addEventListener('keydown', );
+
 
 function createImageMarkup(settings) {
     return settings.map(({ preview, original, description }) => {
@@ -55,7 +55,6 @@ function onClickCloseModal(e) {
     if (e.target !== e.currentTarget) {
         return;
     };
-    window.removeEventListener('keydown', onEscKeyPress);
     closeModal()
 }
 
@@ -67,6 +66,8 @@ function onEscKeyPress(e) {
 }
 
 function closeModal() {
+
+    window.removeEventListener('keydown', onEscKeyPress);
     lightboxImageRef.src = "";
     lightboxRef.classList.remove('is-open');
 }
